@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quote</title>
+    <!-- Font awesome -->
+
+    <!-- Google Font (EB GARAMOND)-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Google Font (POPPINS) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap"
+      rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet" />
+
+    <!-- Tailwind and DaisyUI cdn -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@3.3.1/dist/full.css"
+      rel="stylesheet"
+      type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom tailwind setup -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              title: "#414040",
+              description: "#707070",
+            },
+          },
+        },
+      };
+    </script>
+    <!-- fontawesome Cdn -->
+    <script
+      src="https://kit.fontawesome.com/fc0be0cdad.js"
+      crossorigin="anonymous"></script>
+
+    <!-- custom font style -->
+    <style>
+      .font-garamond {
+        font-family: "EB Garamond", serif;
+      }
+
+      .font-poppins {
+        font-family: "EB Garamond", serif;
+      }
+
+  #output {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none; /* Prevent the output div from interfering with form input */
+    transition: all .5s linear;
+
+  }
+
+  #output {
+    text-align: center;
+    font-size: 24px;
+    color:#000000;
+  }
+
+  .show{
+      margin-top: 200px;
+      transition: all .2s linear;
+      margin-inline:auto;
+  }
+
+    </style>
+  </head>
+      <body class="h-[100vh] w-[100%] grid items-center font-poppins">
+        <!-- The button to open modal -->
+        <div id="parent "
+          class="w-[100%] rounded-lg overflow-hidden relative h-[500px] p-3  bg-[#381f9d25] lg:max-w-[50%] mx-auto flex justify-center items-center">
+          <div class="text-center grid justify-between">
+  
+            <button class="btn outline-none border-none font-light hover:bg-[#e2004bb9] bg-[#ce2563c7] opacity-3 text-gray-200 hover:text-white" onclick="showName()" id="underlyingBtn">open modal</button>
+         </div>
+            <div id="output" class="w-[80%] px-8 mx-auto"></div>
+      </div>
+
+      <script>
+            const underlyingBtn = document.getElementById('underlyingBtn')
+            const parent = document.querySelector("#parent");
+            const output = document.querySelector('#output');
+          
+            function showOutput(message) {
+                  
+                  output.innerHTML = `<p>${message}</p>`;
+                  output.style.opacity = '1'
+            }
+          
+            const quotes = [
+            "Be yourself; everyone else is already taken. - Oscar Wilde",
+            "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
+            "In the end, it's not the years in your life that count. It's the life in your years. - Abraham Lincoln",
+            "Believe you can and you're halfway there. - Theodore Roosevelt",
+            "The only way to do great work is to love what you do. - Steve Jobs",
+            "You miss 100% of the shots you don't take. - Wayne Gretzky",
+            "The only limit to our realization of tomorrow will be our doubts of today. - Franklin D. Roosevelt",
+            "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill",
+            "Life is what happens when you're busy making other plans. - John Lennon",
+            "The greatest glory in living lies not in never falling, but in rising every time we fall. - Nelson Mandela"
+            ];
+
+
+
+            function showName(){
+                  const randomQuote = Math.ceil(Math.random() * quotes.length - 1)
+
+
+                  underlyingBtn.classList.add('show')
+                  showOutput(quotes[randomQuote])
+                  console.log(randomQuote)
+            }
+
+          </script>
+          
+      </body>
+    </html>
+  </body>
+</html>

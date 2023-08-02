@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Football</title>
+    <!-- Font awesome -->
+
+    <!-- Google Font (EB GARAMOND)-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Google Font (POPPINS) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap"
+      rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet" />
+
+    <!-- Tailwind and DaisyUI cdn -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@3.3.1/dist/full.css"
+      rel="stylesheet"
+      type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom tailwind setup -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              title: "#414040",
+              description: "#707070",
+            },
+          },
+        },
+      };
+    </script>
+    <!-- fontawesome Cdn -->
+    <script
+      src="https://kit.fontawesome.com/fc0be0cdad.js"
+      crossorigin="anonymous"></script>
+
+    <!-- custom font style -->
+    <style>
+      .font-garamond {
+        font-family: "EB Garamond", serif;
+      }
+
+      .font-poppins {
+        font-family: "EB Garamond", serif;
+      }
+
+    </style>
+  </head>
+      <body class="h-[100vh] w-[100%] grid items-center justify-center font-poppins">
+            <div class="space-y-3 font-garamond">
+                  <h1 class="text-6xl font-bold">Insert two numbers</h1>
+                  <div class="w-[800px] flex flex-col">
+                        <input type="number" id="input1" class="text-6xl outline-none p-2 bg-teal-100" autofocus>
+                        <input type="number" id="input2" class="text-6xl outline-none p-2 bg-teal-200">
+                        <button class="btn btn-primary" id="btn" onclick="showSum()">Submit</button>
+                    </div>     
+                    
+                    <div class="bg-[#000000a4] text-5xl text-white font-extrabold justify-center items-center absolute inset-0 hidden" id="display"></div>
+            </div>
+              <script>
+                  const btn = document.getElementById('btn');
+                  const display = document.getElementById('display');
+                          
+                  function showSum() {
+                      const input1 = document.getElementById('input1');
+                      const input2 = document.getElementById('input2');
+                      
+                      const value1 = parseFloat(input1.value);
+                      const value2 = parseFloat(input2.value);
+                      
+                      if (!isNaN(value1) && !isNaN(value2)) {
+                          const sum = value1 + value2;
+                          display.innerHTML = `<h1>Sum: ${sum}</h1>`;
+                          display.style.display = 'flex';
+                      } else {
+                          display.textContent = 'Invalid Input';
+                          display.style.display = 'flex';
+                      }
+                  }
+              </script>
+      </script>          
+      </body>
+    </html>
+  </body>
+</html>

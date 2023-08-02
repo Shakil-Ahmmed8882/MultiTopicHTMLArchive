@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library Catalog</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        display: flex;
+        width: 100%;
+        height: 100vh;
+      }
+
+      .col-1,
+      .col-2 {
+        flex: 1;
+        padding: 20px;
+      }
+
+      .col-1 {
+        background-color: rgb(28, 27, 27);
+      }
+
+      .col-2 {
+        background: linear-gradient(#2bb5df, hsl(202, 81%, 53%));
+      }
+
+      h1 {
+        font-size: 3.3rem;
+        color: #fff;
+        padding-bottom: 2rem;
+      }
+
+      input,
+      button {
+        all: unset;
+        width: 100%;
+        height: 100%;
+        padding: 14px 0;
+        color: #fff;
+      }
+
+      label {
+        display: block;
+        border-radius: 5px;
+        padding: 15px;
+        color: #cac0c0;
+        width: 600px;
+        margin-top: 20px;
+        background-color: rgba(150, 151, 151, 0.068);
+      }
+
+      button {
+        background-color: #fff;
+        display: inline-block;
+        width: 200px;
+        margin-top: 2rem;
+        border-radius: 5px;
+        padding: 20px 0;
+        color: #000;
+        text-align: center;
+      }
+
+      #catalogList li {
+        background-color: #fff;
+        padding: 20px 10px;
+        list-style: none;
+        border-radius: 0 4px 4px 0;
+        border-left: 4px solid red;
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="col-1">
+      <h1>Library Catalog</h1>
+
+      <form id="addBookForm">
+        <label for="title"
+          >Title: <input type="text" id="title" required /><br />
+        </label>
+
+        <label for="author"
+          >Author: <input type="text" id="author" required /><br />
+        </label>
+        <label for="genre"
+          >Genre: <input type="text" id="genre" required /><br />
+        </label>
+
+        <button type="submit">Add Book</button>
+      </form>
+    </div>
+    <div class="col-2">
+      <h1>Current Catalog:</h1>
+      <ul id="catalogList">
+        <!-- Book items will be dynamically added here -->
+      </ul>
+    </div>
+
+    <script>
+      // Define a constructor function for creating book objects
+      function Book(title, author, genre) {
+        this.title = title;
+        this.author = author;
+        this.genre = genre;
+      }
+
+      // Initialize an array to store the library catalog
+      var libraryCatalog = [];
+
+      // Function to add a new book to the catalog
+      function addBook(title, author, genre) {
+        var newBook = new Book(title, author, genre);
+        libraryCatalog.push(newBook);
+      }
+
+      // Function to display the entire library catalog
+      function displayCatalog() {
+        var catalogList = document.getElementById("catalogList");
+        catalogList.innerHTML = ""; // Clear previous entries
+
+        for (var i = 0; i < libraryCatalog.length; i++) {
+          var bookItem = document.createElement("li");
+          bookItem.textContent = `${libraryCatalog[i].title} by ${libraryCatalog[i].author} (${libraryCatalog[i].genre})`;
+          catalogList.appendChild(bookItem);
+        }
+      }
+
+      // Function to handle form submission and add a new book to the catalog
+      document
+        .getElementById("addBookForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          var titleInput = document.getElementById("title");
+          var authorInput = document.getElementById("author");
+          var genreInput = document.getElementById("genre");
+
+          var title = titleInput.value;
+          var author = authorInput.value;
+          var genre = genreInput.value;
+
+          addBook(title, author, genre);
+          displayCatalog();
+
+          // Clear input fields
+          titleInput.value = "";
+          authorInput.value = "";
+          genreInput.value = "";
+        });
+    </script>
+  </body>
+</html>

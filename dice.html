@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rolling dice</title>
+    <!-- Font awesome -->
+
+    <!-- Google Font (EB GARAMOND)-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Google Font (POPPINS) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap"
+      rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet" />
+
+    <!-- Tailwind and DaisyUI cdn -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@3.3.1/dist/full.css"
+      rel="stylesheet"
+      type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom tailwind setup -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              title: "#414040",
+              description: "#707070",
+            },
+          },
+        },
+      };
+    </script>
+    <!-- fontawesome Cdn -->
+    <script
+      src="https://kit.fontawesome.com/fc0be0cdad.js"
+      crossorigin="anonymous"></script>
+
+    <!-- custom font style -->
+    <style>
+      .font-garamond {
+        font-family: "EB Garamond", serif;
+      }
+
+      .font-poppins {
+        font-family: "EB Garamond", serif;
+      }
+
+      .xx{
+            transition: transform .6s linear;
+            transform: rotate(-360deg);
+            font-size: 5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+      }
+      
+    </style>
+  </head>
+      <body class="h-[100vh] w-[100%] grid justify-center items-center font-poppins">
+        <!-- The button to open modal -->
+        <div class="space-y-8">
+            <h1 class="text-6xl font-bold text-teal-400">Click to roll</h1>
+              <div class="w-[200px] mx-auto rounded-lg bg-[#ff297842] h-[200px]" onclick="(show())" id="dice"></div>
+        </div>
+
+
+
+  <!-- js file -->
+  <script>
+      function show() {
+        const dice = document.getElementById("dice");
+        const randomRates = Math.floor(Math.random() * 6) + 1;
+
+        // Reset the animation by removing and re-adding the class
+        dice.classList.remove("xx");
+        void dice.offsetWidth; // Trigger reflow to restart the animation
+        dice.classList.add("xx");
+
+        // Set the new random number after the animation
+        setTimeout(() => {
+          dice.textContent = randomRates;
+        }, 600); // 600ms is the duration of the rotation animation (defined in CSS)
+      }
+    </script>
+      </body>
+    </html>
+  </body>
+</html>

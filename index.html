@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Football</title>
+    <!-- Font awesome -->
+
+    <!-- Google Font (EB GARAMOND)-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Google Font (POPPINS) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap"
+      rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet" />
+
+    <!-- Tailwind and DaisyUI cdn -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@3.3.1/dist/full.css"
+      rel="stylesheet"
+      type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom tailwind setup -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              title: "#414040",
+              description: "#707070",
+            },
+          },
+        },
+      };
+    </script>
+    <!-- fontawesome Cdn -->
+    <script
+      src="https://kit.fontawesome.com/fc0be0cdad.js"
+      crossorigin="anonymous"></script>
+
+    <!-- custom font style -->
+    <style>
+      .font-garamond {
+        font-family: "EB Garamond", serif;
+      }
+
+      .font-poppins {
+        font-family: "EB Garamond", serif;
+      }
+
+  #output {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 0%;
+    background-color: rgba(2, 203, 49, 0.839); /* White color with some transparency */
+    justify-content: center;
+    align-items: center;
+    pointer-events: none; /* Prevent the output div from interfering with form input */
+    transition: all .3s linear;
+
+  }
+
+  #output {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    font-size: 3rem;
+    color:#fff;
+  }
+
+    </style>
+  </head>
+      <body class="h-[100vh] w-[100%] grid items-center font-poppins">
+        <!-- The button to open modal -->
+        <div id="parent"
+          class="w-[100%] rounded-lg overflow-hidden relative h-[500px] bg-black lg:max-w-[50%] mx-auto flex justify-center items-center">
+          <div class="text-center">
+            <div class="space-y-7">
+              <h1 class="text-[#eae8e8] text-4xl font-bold">
+                Guess a number 1 - 10
+              </h1>
+              <div class="space-x-3 flex items-center">
+                <input
+                  type="number"
+                  id="gussingNumber"
+                  class="outline outline-none w-[100%] bg-[#2a2727] text-white px-2 py-4 font-bold text-2xl rounded-lg" />
+              </div>
+              <button class="btn btn-accent text-white" onclick="showName()">open modal</button>
+            </div>
+
+            <div id="output"></div>
+      </div>
+
+      <script>
+            const gussingInput = document.querySelector("#gussingNumber");
+            const parent = document.querySelector("#parent");
+            const output = document.querySelector('#output');
+          
+            function showOutput(message) {
+              output.innerHTML = `<h1>${message}</h1>`;
+              parent.style.backgroundColor = 'transparent';
+              output.style.height = '100%';
+            }
+          
+            function showName(e) {
+              const gussingNumber = gussingInput.value;
+              const randomNumber = Math.floor(Math.random() * 10) + 1;
+              
+              if (gussingNumber == "") {
+                output.style.backgroundColor = 'rgba(255, 0, 0, 0.658)';
+                showOutput("Please input any number");
+
+              } else if (gussingNumber > randomNumber) {
+                showOutput("Your guess is too high! Calm down and try again.");
+
+              } else if (gussingNumber < randomNumber) {
+                showOutput("Your guess is too low! Keep trying......");
+                
+              } else {
+                showOutput("WoW! Congratulations! You got it.🥀");
+              }
+            }
+          </script>
+          
+      </body>
+    </html>
+  </body>
+</html>
